@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitFlow — Premium Fitness. Redefined.</title>
+    <meta name="description" content="FitFlow is a premium fitness experience combining elite coaching, cutting-edge programs, and luxury facilities to transform your body and mind.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest">
+    </script>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7f6f3;
+            --bg-warm: #faf9f6;
+            --bg-dark: #0b0b0b;
+            --bg-dark-secondary: #161616;
+            --bg-card: #ffffff;
+            --text-primary: #0b0b0b;
+            --text-secondary: #555555;
+            --text-tertiary: #777777;
+            --text-light: #ffffff;
+            --text-light-secondary: #b0b0b0;
+            --accent: #f0442c;
+            --accent-hover: #d13a25;
+            --accent-glow: rgba(240, 68, 44, 0.15);
+            --accent-subtle: #fef3f1;
+            --gold: #b8945a;
+            --gold-subtle: #fdf8f2;
+            --border: #e6e5e1;
+            --border-light: #f0efeb;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.12);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --radius-full: 9999px;
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --max-width: 1280px;
+            --nav-height: 80px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        /* ============ NAVIGATION ============ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            background: transparent;
+            padding: 0 40px;
+        }
+
+        .nav.scrolled {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .nav-inner {
+            width: 100%;
+            max-width: var(--max-width);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-light);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            transition: var(--transition-smooth);
+            line-height: 1;
+        }
+
+        .nav.scrolled .nav-logo {
+            color: var(--text-primary);
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: -0.01em;
+            transition: var(--transition-fast);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav.scrolled .nav-links a {
+            color: var(--text-secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition-smooth);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+        .nav.scrolled .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: #fff !important;
+            padding: 10px 22px !important;
+            border-radius: var(--radius-full);
+            font-weight: 600 !important;
+            transition: var(--transition-smooth) !important;
+            font-size: 0.85rem !important;
+            letter-spacing: -0.01em;
+        }
+        .nav-cta:hover {
+            background: var(--accent-hover) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px var(--accent-glow);
+        }
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            padding: 8px;
+            transition: var(--transition-fast);
+        }
+        .nav.scrolled .nav-mobile-toggle {
+            color: var(--text-primary);
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(160deg, #0d0d0d 0%, #1a1a1a 30%, #0f0f0f 60%, #0a0a0a 100%);
+            overflow: hidden;
+            padding: 120px 40px 80px;
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: radial-gradient(circle at 25% 25%, #ffffff 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, #ffffff 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .hero-accent-shape {
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(240, 68, 44, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: heroPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes heroPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 8px 18px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-badge i {
+            width: 14px;
+            height: 14px;
+            color: var(--accent);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 550px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition-smooth);
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 8px 28px var(--accent-glow);
+        }
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(240, 68, 44, 0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-dark {
+            background: var(--bg-dark);
+            color: #fff;
+        }
+        .btn-dark:hover {
+            background: #1f1f1f;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #fff;
+            box-shadow: 0 8px 28px rgba(184, 148, 90, 0.25);
+        }
+        .btn-gold:hover {
+            background: #a07d45;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(184, 148, 90, 0.35);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            justify-content: center;
+            margin-top: 60px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+        }
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 6px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============ SECTION STYLES ============ */
+        .section {
+            padding: 100px 40px;
+        }
+
+        .section-dark {
+            background: var(--bg-dark);
+            color: #fff;
+        }
+
+        .section-warm {
+            background: var(--bg-secondary);
+        }
+
+        .section-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .section-dark .section-subtitle {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        /* ============ PROGRAMS CARDS ============ */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .program-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            position: relative;
+            group: true;
+        }
+        .program-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            border-color: transparent;
+        }
+
+        .program-card-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .program-card:hover .program-card-image {
+            transform: scale(1.06);
+        }
+
+        .program-card-body {
+            padding: 24px 28px 28px;
+        }
+
+        .program-card-meta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .program-card-meta span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 5px 12px;
+            border-radius: var(--radius-full);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+        }
+        .program-card-meta .difficulty-beginner {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .program-card-meta .difficulty-intermediate {
+            background: #fff3e0;
+            color: #e65100;
+        }
+        .program-card-meta .difficulty-advanced {
+            background: #fce4ec;
+            color: #c62828;
+        }
+
+        .program-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .program-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .program-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        .program-card-link i {
+            width: 16px;
+            height: 16px;
+            transition: var(--transition-fast);
+        }
+        .program-card-link:hover i {
+            transform: translateX(4px);
+        }
+
+        /* ============ WHY CHOOSE ============ */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 36px 30px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition-smooth);
+            text-align: center;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            background: var(--accent-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--accent);
+        }
+        .feature-icon i {
+            width: 26px;
+            height: 26px;
+        }
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ============ TRAINERS ============ */
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .trainer-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            transition: var(--transition-smooth);
+            text-align: center;
+        }
+        .trainer-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            border-color: transparent;
+        }
+        .trainer-card-image {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .trainer-card:hover .trainer-card-image {
+            transform: scale(1.04);
+        }
+        .trainer-card-body {
+            padding: 24px 24px 28px;
+        }
+        .trainer-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .trainer-card .trainer-spec {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .trainer-card .trainer-exp {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            margin-bottom: 14px;
+        }
+        .trainer-socials {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+        .trainer-socials a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+            text-decoration: none;
+        }
+        .trainer-socials a:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .trainer-socials a i {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ============ TESTIMONIALS / TRANSFORMATIONS ============ */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 24px;
+        }
+        .testimonial-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition-smooth);
+        }
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 16px;
+            color: #f5a623;
+        }
+        .testimonial-stars i {
+            width: 18px;
+            height: 18px;
+            fill: #f5a623;
+        }
+        .testimonial-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .testimonial-author strong {
+            font-size: 0.9rem;
+            display: block;
+        }
+        .testimonial-author span {
+            font-size: 0.78rem;
+            color: var(--text-tertiary);
+        }
+
+        /* ============ MEMBERSHIP / PRICING ============ */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+            align-items: stretch;
+        }
+        .pricing-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition-smooth);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .pricing-card.featured {
+            border: 2px solid var(--accent);
+            box-shadow: var(--shadow-lg);
+            transform: scale(1.03);
+            z-index: 2;
+            background: #fff;
+        }
+        .pricing-card:hover {
+            box-shadow: var(--shadow-xl);
+            border-color: transparent;
+            transform: translateY(-4px);
+        }
+        .pricing-card.featured:hover {
+            border-color: var(--accent);
+            transform: scale(1.03) translateY(-4px);
+        }
+        .pricing-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: #fff;
+            padding: 6px 20px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .pricing-card .pricing-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 16px 0 4px;
+        }
+        .pricing-card .pricing-price span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            font-family: 'Inter', sans-serif;
+        }
+        .pricing-card .pricing-period {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            margin-bottom: 24px;
+        }
+        .pricing-features {
+            list-style: none;
+            flex-grow: 1;
+            margin-bottom: 24px;
+        }
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .pricing-features li i {
+            width: 18px;
+            height: 18px;
+            color: #2ecc71;
+            flex-shrink: 0;
+        }
+        .pricing-card .btn {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* ============ COMPARISON TABLE ============ */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin-top: 60px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .comparison-table th {
+            background: var(--bg-dark);
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .comparison-table th:first-child {
+            text-align: left;
+            border-radius: var(--radius-lg) 0 0 0;
+        }
+        .comparison-table th:last-child {
+            border-radius: 0 var(--radius-lg) 0 0;
+        }
+        .comparison-table td {
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+        }
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        .comparison-table .check-icon {
+            color: #2ecc71;
+            width: 18px;
+            height: 18px;
+        }
+        .comparison-table .dash {
+            color: #ccc;
+        }
+
+        /* ============ FAQ ============ */
+        .faq-list {
+            max-width: 760px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .faq-item {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+        .faq-item:hover {
+            border-color: var(--border);
+        }
+        .faq-item.active {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+        .faq-question {
+            padding: 20px 24px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+            user-select: none;
+        }
+        .faq-question i {
+            width: 20px;
+            height: 20px;
+            transition: var(--transition-smooth);
+            flex-shrink: 0;
+            color: var(--text-tertiary);
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+            color: var(--accent);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 24px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 24px 20px;
+        }
+
+        /* ============ BMI CALCULATOR ============ */
+        .bmi-section {
+            background: var(--bg-dark);
+            padding: 80px 40px;
+            color: #fff;
+        }
+        .bmi-calculator {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--bg-dark-secondary);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .bmi-calculator h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .bmi-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .bmi-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .bmi-input-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .bmi-input-group input {
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition-fast);
+        }
+        .bmi-input-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .bmi-result {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.03);
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: none;
+        }
+        .bmi-result.show {
+            display: block;
+        }
+
+        /* ============ CONTACT ============ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition-fast);
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .contact-form textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+        .contact-info-item {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 24px;
+            align-items: flex-start;
+        }
+        .contact-info-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--accent);
+        }
+        .contact-info-icon i {
+            width: 20px;
+            height: 20px;
+        }
+        .contact-info-item h4 {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+        }
+        .contact-info-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ============ SCHEDULE ============ */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .schedule-day {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1px solid var(--border-light);
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+        .schedule-day:hover {
+            box-shadow: var(--shadow-md);
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+        .schedule-day h4 {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        .schedule-day .class-name {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .schedule-day .class-time {
+            font-size: 0.78rem;
+            color: var(--text-tertiary);
+        }
+
+        /* ============ NUTRITION TIPS ============ */
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .nutrition-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition-smooth);
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .nutrition-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+        .nutrition-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: #f0fdf4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #16a34a;
+        }
+        .nutrition-icon i {
+            width: 22px;
+            height: 22px;
+        }
+        .nutrition-card h4 {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .nutrition-card p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--bg-dark);
+            color: #fff;
+            padding: 80px 40px 40px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .footer h4 {
+            font-weight: 700;
+            margin-bottom: 18px;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+        }
+        .footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition-fast);
+        }
+        .footer-links a:hover {
+            color: #fff;
+        }
+        .footer-bottom {
+            max-width: var(--max-width);
+            margin: 40px auto 0;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.35);
+        }
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+        }
+        .footer-socials a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.6);
+            transition: var(--transition-fast);
+            text-decoration: none;
+        }
+        .footer-socials a:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .footer-socials a i {
+            width: 17px;
+            height: 17px;
+        }
+
+        /* ============ SCROLL TO TOP ============ */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition-smooth);
+            z-index: 999;
+            box-shadow: 0 8px 24px var(--accent-glow);
+        }
+        .scroll-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .scroll-top-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(240, 68, 44, 0.3);
+        }
+        .scroll-top-btn i {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ============ ANIMATIONS ============ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-stats {
+                gap: 28px;
+            }
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            .pricing-card.featured:hover {
+                transform: translateY(-4px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.97);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 24px 40px;
+                gap: 20px;
+                border-bottom: 1px solid var(--border-light);
+                box-shadow: var(--shadow-md);
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links a {
+                color: var(--text-primary) !important;
+                font-size: 1rem;
+            }
+            .nav-mobile-toggle {
+                display: block;
+            }
+            .nav.scrolled .nav-mobile-toggle {
+                color: var(--text-primary);
+            }
+            .nav-logo {
+                color: #fff;
+            }
+            .nav.scrolled .nav-logo {
+                color: var(--text-primary);
+            }
+            .section {
+                padding: 60px 20px;
+            }
+            .hero {
+                padding: 100px 20px 60px;
+            }
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .programs-grid,
+            .trainers-grid,
+            .testimonials-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .bmi-inputs {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .nutrition-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-stats {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .schedule-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .bmi-calculator {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="#home" class="nav-logo">Fit<span>Flow</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#programs" class="nav-link">Programs</a></li>
+                <li><a href="#trainers" class="nav-link">Trainers</a></li>
+                <li><a href="#membership" class="nav-link">Membership</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#membership" class="nav-cta">Get Started</a></li>
+            </ul>
+            <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <i data-lucide="menu" id="menuIcon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== HOME - HERO ==================== -->
+    <section class="hero" id="home">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-accent-shape"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i data-lucide="flame"></i> Premium Fitness Experience
+            </div>
+            <h1>Transform Your Body.<br><span>Elevate Your Life.</span></h1>
+            <p>FitFlow combines elite coaching, cutting-edge training methodologies, and luxury facilities to deliver results that go beyond the physical.</p>
+            <div class="hero-buttons">
+                <a href="#membership" class="btn btn-primary">Start Your Journey <i data-lucide="arrow-right"></i></a>
+                <a href="#programs" class="btn btn-outline">Explore Programs <i data-lucide="chevron-right"></i></a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="12000">0</div>
+                    <div class="hero-stat-label">Active Members</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="50">0</div>
+                    <div class="hero-stat-label">Elite Trainers</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="98">0</div>
+                    <div class="hero-stat-label">Success Rate %</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== HOME - PROGRAMS PREVIEW ==================== -->
+    <section class="section section-warm" id="programs">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Our Programs</span>
+                <h2 class="section-title">Crafted for Every Goal</h2>
+                <p class="section-subtitle">From strength training to personalized coaching, each program is designed by experts to deliver measurable results.</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Strength Training" class="program-card-image" loading="lazy">
+                    <div class="program-card-body">
+                        <div class="program-card-meta">
+                            <span>12 Weeks</span>
+                            <span class="difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <h3>Strength Training</h3>
+                        <p>Build functional muscle and raw power with our progressive overload system. Perfect for those ready to push their limits.</p>
+                        <a href="#programs" class="program-card-link">View Details <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="program-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80" alt="Weight Loss" class="program-card-image" loading="lazy">
+                    <div class="program-card-body">
+                        <div class="program-card-meta">
+                            <span>8 Weeks</span>
+                            <span class="difficulty-beginner">Beginner</span>
+                        </div>
+                        <h3>Weight Loss</h3>
+                        <p>A sustainable approach to fat loss combining metabolic conditioning, nutrition guidance, and accountability coaching.</p>
+                        <a href="#programs" class="program-card-link">View Details <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="program-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=800&q=80" alt="Cardio" class="program-card-image" loading="lazy">
+                    <div class="program-card-body">
+                        <div class="program-card-meta">
+                            <span>6 Weeks</span>
+                            <span class="difficulty-beginner">Beginner</span>
+                        </div>
+                        <h3>Cardio Excellence</h3>
+                        <p>Boost your cardiovascular health and endurance with high-energy sessions that keep your heart rate in the optimal zone.</p>
+                        <a href="#programs" class="program-card-link">View Details <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="program-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80" alt="Bodybuilding" class="program-card-image" loading="lazy">
+                    <div class="program-card-body">
+                        <div class="program-card-meta">
+                            <span>16 Weeks</span>
+                            <span class="difficulty-advanced">Advanced</span>
+                        </div>
+                        <h3>Bodybuilding</h3>
+                        <p>Sculpt your physique with precision. Our bodybuilding program focuses on symmetry, proportion, and stage-ready conditioning.</p>
+                        <a href="#programs" class="program-card-link">View Details <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="program-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=800&q=80" alt="Personal Coaching" class="program-card-image" loading="lazy">
+                    <div class="program-card-body">
+                        <div class="program-card-meta">
+                            <span>Ongoing</span>
+                            <span class="difficulty-intermediate">All Levels</span>
+                        </div>
+                        <h3>Personal Coaching</h3>
+                        <p>One-on-one attention from elite coaches who create bespoke training and nutrition plans tailored entirely to you.</p>
+                        <a href="#programs" class="program-card-link">View Details <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="program-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=800&q=80" alt="HIIT" class="program-card-image" loading="lazy">
+                    <div class="program-card-body">
+                        <div class="program-card-meta">
+                            <span>4 Weeks</span>
+                            <span class="difficulty-advanced">Advanced</span>
+                        </div>
+                        <h3>HIIT Ignite</h3>
+                        <p>High-intensity interval training that torches calories, boosts metabolism, and builds explosive athletic performance.</p>
+                        <a href="#programs" class="program-card-link">View Details <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== WHY CHOOSE FITFLOW ==================== -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Why FitFlow</span>
+                <h2 class="section-title">The Difference Is Clear</h2>
+                <p class="section-subtitle">We've reimagined what a fitness experience should be. Every detail matters.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><i data-lucide="shield"></i></div>
+                    <h3>Certified Elite Coaches</h3>
+                    <p>Every trainer holds advanced certifications and brings years of real-world experience to every session.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><i data-lucide="activity"></i></div>
+                    <h3>Science-Backed Methods</h3>
+                    <p>Our programs are built on evidence-based training principles, not passing fitness fads or trends.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><i data-lucide="smartphone"></i></div>
+                    <h3>FitFlow App Access</h3>
+                    <p>Track workouts, log nutrition, and connect with your coach directly through our premium mobile experience.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><i data-lucide="heart"></i></div>
+                    <h3>Holistic Wellness</h3>
+                    <p>Beyond the gym floor, we support your mental resilience, sleep quality, and nutritional habits.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><i data-lucide="users"></i></div>
+                    <h3>Supportive Community</h3>
+                    <p>Join a network of like-minded individuals who inspire, motivate, and hold each other accountable.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><i data-lucide="award"></i></div>
+                    <h3>Proven Results</h3>
+                    <p>With a 98% client satisfaction rate, our track record speaks for itself. Real transformations, real people.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TRAINERS ==================== -->
+    <section class="section section-dark" id="trainers">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Meet the Team</span>
+                <h2 class="section-title" style="color:#fff;">Elite Coaches. Real Experts.</h2>
+                <p class="section-subtitle">Our trainers are handpicked from the top 1% of fitness professionals worldwide.</p>
+            </div>
+            <div class="trainers-grid">
+                <div class="trainer-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=800&q=80" alt="Marcus Rivera" class="trainer-card-image" loading="lazy">
+                    <div class="trainer-card-body">
+                        <h3>Marcus Rivera</h3>
+                        <p class="trainer-spec">Strength & Conditioning</p>
+                        <p class="trainer-exp">14 years experience</p>
+                        <div class="trainer-socials">
+                            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                            <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="trainer-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=800&q=80" alt="Sophie Chen" class="trainer-card-image" loading="lazy">
+                    <div class="trainer-card-body">
+                        <h3>Sophie Chen</h3>
+                        <p class="trainer-spec">Yoga & Flexibility</p>
+                        <p class="trainer-exp">10 years experience</p>
+                        <div class="trainer-socials">
+                            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                            <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="trainer-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=800&q=80" alt="David Okafor" class="trainer-card-image" loading="lazy">
+                    <div class="trainer-card-body">
+                        <h3>David Okafor</h3>
+                        <p class="trainer-spec">Bodybuilding & Nutrition</p>
+                        <p class="trainer-exp">18 years experience</p>
+                        <div class="trainer-socials">
+                            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                            <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="trainer-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1550345332-09e3ac987658?auto=format&fit=crop&w=800&q=80" alt="Elena Vasquez" class="trainer-card-image" loading="lazy">
+                    <div class="trainer-card-body">
+                        <h3>Elena Vasquez</h3>
+                        <p class="trainer-spec">HIIT & Athletic Performance</p>
+                        <p class="trainer-exp">8 years experience</p>
+                        <div class="trainer-socials">
+                            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                            <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TRANSFORMATION STORIES ==================== -->
+    <section class="section section-warm">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Real Results</span>
+                <h2 class="section-title">Transformation Stories</h2>
+                <p class="section-subtitle">These are the stories that drive us. Real people, real dedication, real change.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star" fill="#f5a623"></i><i data-lucide="star" fill="#f5a623"></i><i data-lucide="star" fill="#f5a623"></i><i data-lucide="star" fill="#f5a623"></i><i data-lucide="star" fill="#f5a623"></i>
+                    </div>
+                    <p>"FitFlow didn't just change my body; it rewired my entire approach to health. I've lost 32 pounds and gained a confidence I never knew I had."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80" alt="Jessica M." class="testimonial-avatar" loading="lazy">
+                        <div><strong>Jessica M.</strong><span>Lost 32 lbs in 6 months</span></div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star" fill="#f5a623"></i><i data-lucide="star" fill="#f5a623"></i><i data-lucide="star" fill="#f5a623"></i><i data-lucide="star" fill="#f5a623"></i><i data-lucide="star" fill="#f5a623"></i>
+                    </div>
+                    <p>"The personal coaching program is worth every penny. Marcus pushed me past plateaus I thought were permanent. I'm in the best shape of my life at 42."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Ryan T." class="testimonial-avatar" loading="lazy">
+                        <div><strong>Ryan T.</strong><span>Gained 15 lbs of muscle</span></div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star" fill="#f5a623"></i><i data-lucide="star" fill="#f5a623"></i><i data-lucide="star" fill="#f5a623"></i><i data-lucide="star" fill="#f5a623"></i><i data-lucide="star" fill="#f5a623"></i>
+                    </div>
+                    <p>"I was intimidated to start, but the FitFlow community made me feel at home from day one. The trainers meet you where you are and build from there."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Priya K." class="testimonial-avatar" loading="lazy">
+                        <div><strong>Priya K.</strong><span>Completed first marathon</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MEMBERSHIP PLANS ==================== -->
+    <section class="section" id="membership">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Membership</span>
+                <h2 class="section-title">Choose Your Path</h2>
+                <p class="section-subtitle">Every plan includes access to our premium facilities, app, and community. The choice is how deep you want to go.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <h3>Starter</h3>
+                    <div class="pricing-price">$49<span>/mo</span></div>
+                    <p class="pricing-period">Billed monthly</p>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check-circle"></i> Gym floor access</li>
+                        <li><i data-lucide="check-circle"></i> 4 group classes/month</li>
+                        <li><i data-lucide="check-circle"></i> FitFlow app basic</li>
+                        <li><i data-lucide="check-circle"></i> Locker room access</li>
+                        <li><i data-lucide="check-circle"></i> Community events</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline" style="color:var(--text-primary);border-color:var(--border);">Get Started</a>
+                </div>
+                <div class="pricing-card featured fade-in">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3>Pro</h3>
+                    <div class="pricing-price">$99<span>/mo</span></div>
+                    <p class="pricing-period">Billed monthly</p>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check-circle"></i> Everything in Starter</li>
+                        <li><i data-lucide="check-circle"></i> Unlimited group classes</li>
+                        <li><i data-lucide="check-circle"></i> 2 personal training sessions/month</li>
+                        <li><i data-lucide="check-circle"></i> Nutrition plan review</li>
+                        <li><i data-lucide="check-circle"></i> Priority booking</li>
+                        <li><i data-lucide="check-circle"></i> FitFlow app premium</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Join Pro</a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <h3>Elite</h3>
+                    <div class="pricing-price">$199<span>/mo</span></div>
+                    <p class="pricing-period">Billed monthly</p>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check-circle"></i> Everything in Pro</li>
+                        <li><i data-lucide="check-circle"></i> Unlimited personal training</li>
+                        <li><i data-lucide="check-circle"></i> Custom meal plans</li>
+                        <li><i data-lucide="check-circle"></i> Private locker suite</li>
+                        <li><i data-lucide="check-circle"></i> Recovery lounge access</li>
+                        <li><i data-lucide="check-circle"></i> Quarterly body comp analysis</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-gold">Go Elite</a>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="comparison-table-wrapper fade-in" style="margin-top:60px;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Starter</th>
+                            <th>Pro</th>
+                            <th>Elite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gym Access</td>
+                            <td><i data-lucide="check-circle" class="check-icon"></i></td>
+                            <td><i data-lucide="check-circle" class="check-icon"></i></td>
+                            <td><i data-lucide="check-circle" class="check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Group Classes</td>
+                            <td>4 / month</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Personal Training</td>
+                            <td><span class="dash">—</span></td>
+                            <td>2 / month</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Nutrition Planning</td>
+                            <td><span class="dash">—</span></td>
+                            <td>Review only</td>
+                            <td>Custom plans</td>
+                        </tr>
+                        <tr>
+                            <td>App Access</td>
+                            <td>Basic</td>
+                            <td>Premium</td>
+                            <td>Premium</td>
+                        </tr>
+                        <tr>
+                            <td>Recovery Lounge</td>
+                            <td><span class="dash">—</span></td>
+                            <td><span class="dash">—</span></td>
+                            <td><i data-lucide="check-circle" class="check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Body Comp Analysis</td>
+                            <td><span class="dash">—</span></td>
+                            <td><span class="dash">—</span></td>
+                            <td>Quarterly</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BMI CALCULATOR + CLASS SCHEDULE ==================== -->
+    <section class="bmi-section" id="tools">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag" style="color:#f0442c;">Wellness Tools</span>
+                <h2 class="section-title" style="color:#fff;">Know Your Numbers</h2>
+                <p class="section-subtitle">Use our interactive tools to understand your body and plan your fitness journey.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+                <!-- BMI Calculator -->
+                <div class="bmi-calculator fade-in" id="bmiCalc">
+                    <h3>BMI Calculator</h3>
+                    <div class="bmi-inputs">
+                        <div class="bmi-input-group">
+                            <label>Height (cm)</label>
+                            <input type="number" id="bmiHeight" placeholder="e.g. 175" min="100" max="250">
+                        </div>
+                        <div class="bmi-input-group">
+                            <label>Weight (kg)</label>
+                            <input type="number" id="bmiWeight" placeholder="e.g. 70" min="30" max="300">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="calculateBMI()" style="width:100%;justify-content:center;">Calculate My BMI</button>
+                    <div class="bmi-result" id="bmiResult"></div>
+                </div>
+                <!-- Class Schedule -->
+                <div class="fade-in">
+                    <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:20px;text-align:center;">Weekly Schedule</h3>
+                    <div class="schedule-grid">
+                        <div class="schedule-day">
+                            <h4>Monday</h4>
+                            <p class="class-name">HIIT Ignite</p>
+                            <p class="class-time">7:00 AM & 6:00 PM</p>
+                        </div>
+                        <div class="schedule-day">
+                            <h4>Tuesday</h4>
+                            <p class="class-name">Strength</p>
+                            <p class="class-time">8:00 AM & 5:30 PM</p>
+                        </div>
+                        <div class="schedule-day">
+                            <h4>Wednesday</h4>
+                            <p class="class-name">Cardio</p>
+                            <p class="class-time">6:30 AM & 7:00 PM</p>
+                        </div>
+                        <div class="schedule-day">
+                            <h4>Thursday</h4>
+                            <p class="class-name">Bodybuilding</p>
+                            <p class="class-time">9:00 AM & 5:00 PM</p>
+                        </div>
+                        <div class="schedule-day">
+                            <h4>Friday</h4>
+                            <p class="class-name">HIIT Ignite</p>
+                            <p class="class-time">7:00 AM & 6:00 PM</p>
+                        </div>
+                        <div class="schedule-day">
+                            <h4>Saturday</h4>
+                            <p class="class-name">Yoga Flex</p>
+                            <p class="class-time">9:30 AM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NUTRITION TIPS ==================== -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Nutrition</span>
+                <h2 class="section-title">Fuel Your Performance</h2>
+                <p class="section-subtitle">Expert-backed nutrition guidance to complement your training and accelerate results.</p>
+            </div>
+            <div class="nutrition-grid">
+                <div class="nutrition-card fade-in">
+                    <div class="nutrition-icon"><i data-lucide="apple"></i></div>
+                    <div>
+                        <h4>Prioritize Protein</h4>
+                        <p>Aim for 1.6-2.2g of protein per kg of bodyweight daily. Distribute intake evenly across meals to maximize muscle protein synthesis.</p>
+                    </div>
+                </div>
+                <div class="nutrition-card fade-in">
+                    <div class="nutrition-icon"><i data-lucide="droplets"></i></div>
+                    <div>
+                        <h4>Hydrate Strategically</h4>
+                        <p>Drink at least 3 liters of water daily. Add electrolytes during intense training sessions to maintain peak performance.</p>
+                    </div>
+                </div>
+                <div class="nutrition-card fade-in">
+                    <div class="nutrition-icon"><i data-lucide="clock"></i></div>
+                    <div>
+                        <h4>Time Your Carbs</h4>
+                        <p>Consume complex carbohydrates 2-3 hours before training. Post-workout, pair fast-digesting carbs with protein within 45 minutes.</p>
+                    </div>
+                </div>
+                <div class="nutrition-card fade-in">
+                    <div class="nutrition-icon"><i data-lucide="moon"></i></div>
+                    <div>
+                        <h4>Sleep for Recovery</h4>
+                        <p>Quality sleep (7-9 hours) is when your body repairs muscle tissue. Avoid heavy meals and screens 60 minutes before bed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="section section-warm" id="faq">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What makes FitFlow different from other gyms?
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>FitFlow is a premium fitness experience, not just a gym. We combine elite-certified coaching, science-backed programming, luxury facilities, and a comprehensive mobile app to deliver a complete wellness ecosystem. Our 98% client satisfaction rate and personalized approach set us apart from traditional fitness centers.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Can I try before committing to a membership?
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. We offer a complimentary 3-day pass that gives you full access to our facilities, two group classes, and a consultation with one of our senior coaches. This allows you to experience the FitFlow difference firsthand before making any commitment.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Are the trainers certified?
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, every FitFlow trainer holds nationally recognized certifications (NASM, ACE, ISSA, or equivalent) plus specialized credentials in their area of expertise. Many hold advanced degrees in exercise science, kinesiology, or nutrition. We invest heavily in continuing education for our entire team.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Is there a cancellation fee?
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We believe in earning your loyalty, not locking you in. All memberships can be canceled with 30 days' notice. There are no hidden cancellation fees or long-term contracts. If you're on an annual plan and cancel early, we simply prorate the remaining time.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Do you offer nutrition guidance?
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Pro members receive a nutrition plan review, and Elite members receive fully customized meal plans updated monthly. All members have access to our library of nutrition resources, recipes, and guidance through the FitFlow app.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="section" id="contact">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Start Your Transformation</h2>
+                <p class="section-subtitle">Ready to take the first step? Reach out and we'll create a plan tailored to your goals.</p>
+            </div>
+            <div class="contact-grid">
+                <form class="contact-form fade-in" id="contactForm" onsubmit="handleContactSubmit(event)">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="tel" placeholder="Phone Number">
+                    <select required>
+                        <option value="">Select Program Interest</option>
+                        <option>Strength Training</option>
+                        <option>Weight Loss</option>
+                        <option>Cardio Excellence</option>
+                        <option>Bodybuilding</option>
+                        <option>Personal Coaching</option>
+                        <option>HIIT Ignite</option>
+                        <option>General Inquiry</option>
+                    </select>
+                    <textarea placeholder="Tell us about your goals..."></textarea>
+                    <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message <i data-lucide="send"></i></button>
+                </form>
+                <div class="fade-in">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i data-lucide="map-pin"></i></div>
+                        <div>
+                            <h4>Visit Us</h4>
+                            <p>1200 Wilshire Boulevard<br>Los Angeles, CA 90025</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i data-lucide="phone"></i></div>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>(310) 555-0147<br>Mon-Fri, 6AM-9PM PST</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i data-lucide="mail"></i></div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>hello@fitflow.com<br>support@fitflow.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i data-lucide="clock"></i></div>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Monday - Friday: 5AM - 11PM<br>Saturday - Sunday: 6AM - 9PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA BANNER ==================== -->
+    <section class="section section-dark" style="text-align:center;padding:80px 40px;">
+        <div class="section-container fade-in">
+            <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;margin-bottom:16px;">Ready to Redefine Your Limits?</h2>
+            <p style="color:rgba(255,255,255,0.55);max-width:500px;margin:0 auto 32px;font-size:1.1rem;">Join FitFlow today and experience what premium fitness truly feels like.</p>
+            <a href="#membership" class="btn btn-primary" style="font-size:1rem;padding:16px 36px;">View Membership Plans <i data-lucide="arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <a class="nav-logo" style="font-size:1.6rem;color:#fff;text-decoration:none;">Fit<span style="color:var(--accent);">Flow</span></a>
+                <p style="margin-top:16px;">Premium fitness redefined. Elevating bodies and minds through elite coaching, science-backed programming, and an unwavering commitment to excellence.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4>Programs</h4>
+                <ul class="footer-links">
+                    <li><a href="#programs">Strength Training</a></li>
+                    <li><a href="#programs">Weight Loss</a></li>
+                    <li><a href="#programs">Cardio</a></li>
+                    <li><a href="#programs">Bodybuilding</a></li>
+                    <li><a href="#programs">Personal Coaching</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#trainers">Our Trainers</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 FitFlow. All rights reserved. Designed & Developed by Devora.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== SCROLL TO TOP BUTTON ==================== -->
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            initScrollEffects();
+            initMobileMenu();
+            initCounterAnimation();
+            initFadeInObserver();
+            initSmoothScroll();
+            updateNavOnScroll();
+        });
+
+        // Re-initialize icons after DOM changes
+        function refreshIcons() {
+            setTimeout(() => lucide.createIcons(), 50);
+        }
+
+        // Nav scroll effect
+        function updateNavOnScroll() {
+            const nav = document.getElementById('navbar');
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 80) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+                if (window.scrollY > 600) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+                updateActiveNavLink();
+            });
+        }
+
+        // Active nav link highlighting
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.color = 'var(--accent)';
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        function initMobileMenu() {
+            const toggle = document.getElementById('mobileToggle');
+            const navLinks = document.getElementById('navLinks');
+            const menuIcon = document.getElementById('menuIcon');
+            toggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+                if (navLinks.classList.contains('open')) {
+                    menuIcon.setAttribute('data-lucide', 'x');
+                } else {
+                    menuIcon.setAttribute('data-lucide', 'menu');
+                }
+                refreshIcons();
+            });
+            // Close menu on link click
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                    menuIcon.setAttribute('data-lucide', 'menu');
+                    refreshIcons();
+                });
+            });
+        }
+
+        // Smooth scroll for anchor links
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const offset = 90;
+                        const position = target.getBoundingClientRect().top + window.pageYOffset -
+                            offset;
+                        window.scrollTo({ top: position, behavior: 'smooth' });
+                    }
+                });
+            });
+            // Scroll to top button
+            document.getElementById('scrollTopBtn').addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Intersection Observer for fade-in animations
+        function initFadeInObserver() {
+            const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        }
+
+        // Counter animation for hero stats
+        function initCounterAnimation() {
+            const counters = document.querySelectorAll('[data-count]');
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseInt(el.getAttribute('data-count'));
+                        const duration = 2000;
+                        const startTime = performance.now();
+
+                        function updateCounter(currentTime) {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            el.textContent = Math.floor(eased * target).toLocaleString();
+                            if (progress < 1) {
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                el.textContent = target.toLocaleString();
+                            }
+                        }
+                        requestAnimationFrame(updateCounter);
+                        counterObserver.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+            counters.forEach(c => counterObserver.observe(c));
+        }
+
+        // FAQ toggle
+        function toggleFAQ(questionEl) {
+            const item = questionEl.parentElement;
+            const wasActive = item.classList.contains('active');
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('active'));
+            // Open clicked (if it wasn't already open)
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+            refreshIcons();
+        }
+
+        // BMI Calculator
+        function calculateBMI() {
+            const heightCm = parseFloat(document.getElementById('bmiHeight').value);
+            const weightKg = parseFloat(document.getElementById('bmiWeight').value);
+            const resultDiv = document.getElementById('bmiResult');
+            if (!heightCm || !weightKg || heightCm < 100 || heightCm > 250 || weightKg < 30 || weightKg > 300) {
+                resultDiv.classList.add('show');
+                resultDiv.style.color = '#f0442c';
+                resultDiv.textContent =
+                    'Please enter valid values. Height: 100-250 cm, Weight: 30-300 kg.';
+                return;
+            }
+            const heightM = heightCm / 100;
+            const bmi = weightKg / (heightM * heightM);
+            const bmiRounded = bmi.toFixed(1);
+            let category, color;
+            if (bmi < 18.5) { category = 'Underweight';
+                color = '#f59e0b'; } else if (bmi < 25) { category = 'Healthy Weight';
+                color = '#10b981'; } else if (bmi < 30) { category = 'Overweight';
+                color = '#f59e0b'; } else { category = 'Obese';
+                color = '#ef4444'; }
+            resultDiv.classList.add('show');
+            resultDiv.style.color = color;
+            resultDiv.innerHTML =
+                `Your BMI: <strong>${bmiRounded}</strong> — <span style="color:${color};font-weight:700;">${category}</span>`;
+        }
+
+        // Contact form handler
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = 'Message Sent!';
+            btn.style.background = '#10b981';
+            btn.style.pointerEvents = 'none';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+                btn.style.pointerEvents = '';
+                form.reset();
+            }, 2500);
+        }
+
+        // Initialize scroll effects on load
+        function initScrollEffects() {
+            updateNavOnScroll();
+            updateActiveNavLink();
+        }
+    </script>
+</body>
+</html>
